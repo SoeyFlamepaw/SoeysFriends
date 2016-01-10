@@ -18,7 +18,7 @@ local SoeysFriends = {}
 -- for Suffix Numbers see:
 --   https://github.com/NexusInstruments/1Version/wiki/OneVersion_ReportAddonInfo-event#suffix-list
 
-local Major, Minor, Patch, Suffix = 1, 0, 0, 0
+local Major, Minor, Patch, Suffix = 1, 0, 1, 0
 
 local SOEYSFRIENDS_CURRENT_VERSION = string.format("%d.%d.%d", Major, Minor, Patch)
  
@@ -113,7 +113,7 @@ end
 
 -- Compare Cached Account Friend status to changed data
 function SoeysFriends:CheckAccountFriendStatusChange(tAccountFriend, bSilent)
-	if tAccountFriend.fLastOnline == 0 then
+	if tAccountFriend.arCharacters then
 		if(self.tAccountFriendsCurrentChar[tAccountFriend.nId] == nil and bSilent ~= true) then
 			self:OnAccountFriendNowOnline(tAccountFriend, tAccountFriend.arCharacters[1]);
 		end
